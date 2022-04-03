@@ -29,10 +29,14 @@ class Engine extends AbstractEngine
     public function render($template, $value)
     {
         $result = $template;
-        if (!is_array($value))
+        if (!is_array($value)) {
             $value = array('' => $value);
+        }
 
         foreach (new NestedKeyIterator(new RecursiveArrayOnlyIterator($value)) as $key => $value) {
+            if(is_callable($value)) {
+                $value = call_user_func($value);
+            }
             $result = str_replace($this->left . $key . $this->right, $value, $result);
         }
 

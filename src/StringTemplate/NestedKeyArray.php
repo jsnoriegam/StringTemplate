@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of library-template
  *
@@ -44,8 +45,9 @@ class NestedKeyArray implements \ArrayAccess, \IteratorAggregate
         $ary = &$this->array;
 
         foreach ($keys as $key) {
-            if (!isset($ary[$key]))
+            if (!isset($ary[$key])) {
                 return false;
+            }
             $ary = &$ary[$key];
         }
 
@@ -107,9 +109,10 @@ class NestedKeyArray implements \ArrayAccess, \IteratorAggregate
 
         if (!$offsets) {
             $target[$currKey] = $value;
-        }  else {
-            if (!isset($target[$currKey]))
+        } else {
+            if (!isset($target[$currKey])) {
                 $target[$currKey] = array();
+            }
             $this->setNestedOffset($target[$currKey], $offsets, $value);
         }
 

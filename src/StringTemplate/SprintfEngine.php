@@ -30,13 +30,14 @@ class SprintfEngine extends Engine
     public function render($template, $value)
     {
         //Performance: if there are no '%' fallback to Engine
-        if (strstr($template, '%') == false) {
+        if (strstr($template, '%') === false) {
             return parent::render($template, $value);
         }
 
         $result = $template;
-        if (!is_array($value))
+        if (!is_array($value)) {
             $value = array('' => $value);
+        }
 
         foreach (new NestedKeyIterator(new RecursiveArrayOnlyIterator($value)) as $key => $value) {
             $pattern = "/" . $this->left . $key . "(%[^" . $this->right . "]+)?" . $this->right . "/";
