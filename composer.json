@@ -1,5 +1,5 @@
 {
-    "name": "nicmart/string-template",
+    "name": "latinosoft/string-template",
     "type": "library",
     "description": "StringTemplate is a very simple string template engine for php. I've written it to have a thing like sprintf, but with named and nested substutions.",
     "keywords": [],
@@ -8,6 +8,10 @@
         {
             "name": "Nicolò Martini",
             "email": "nicmartnic@gmail.com"
+        },
+        {
+            "name": "Juan Noriega",
+            "email": "jsnoriegam@gmail.com"
         }
     ],
     "require": {

@@ -44,6 +44,14 @@ class EngineTest extends TestCase
         $engine = new Engine;
         $this->assertEquals('foo', $engine->render('{value}', array('value' => new ObjectMock())));
     }
+
+    public function testRenderWithCallableValues()
+    {
+        $engine = new Engine;
+        $this->assertEquals('foo', $engine->render('{value}', array('value' => function() {
+            return 'foo';
+        })));
+    }
 }
 
 class ObjectMock
